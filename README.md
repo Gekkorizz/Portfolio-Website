@@ -1,4 +1,4 @@
-# Modern Developer Portfolio
+# Developer Portfolio
 
 A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features smooth animations, dark/light theme toggle, and a clean, professional design.
 
@@ -160,10 +160,9 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 📞 Support
 
 If you have any questions or need help customizing the portfolio, feel free to reach out:
-- Email: hello@johndoe.dev
-- Twitter: [@johndoe](https://twitter.com/johndoe)
-- LinkedIn: [John Doe](https://linkedin.com/in/johndoe)
+- Email: 1bi22cs080@bit-bangalore.edu.in
+- LinkedIn: [Lakshay Rai](https://www.linkedin.com/in/lakshay-rai-3b6889258/)
 
 ---
 
-**Built with ❤️ by [John Doe](https://johndoe.dev)**
+**Built with ❤️ by Lakshay Rai**
