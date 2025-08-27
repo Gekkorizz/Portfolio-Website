@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Priya Sharma",
+    "email": "priya.sharma@example.com",
+    "role": "Computer Science Student",
+    "company": "BIT Bangalore",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=faces",
+    "message": "Amazing portfolio! The design is incredibly clean and professional. Really impressed by your Student Portal project - the functionality looks comprehensive and well-thought-out. Keep up the fantastic work! 🚀",
+    "date": "2024-01-12T10:30:00Z",
+    "likes": 8
+  },
+  {
+    "id": 2,
+    "name": "Rahul Gupta",
+    "email": "rahul.gupta@example.com",
+    "role": "Software Developer",
+    "company": "Tech Startup",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces",
+    "message": "Your Byte-N-Crypt project is impressive! The security implementation shows deep understanding of cryptography concepts. Great work on making advanced security accessible through a user-friendly interface.",
+    "date": "2024-01-10T14:15:00Z",
+    "likes": 12
+  },
+  {
+    "id": 3,
+    "name": "Anita Desai",
+    "email": "anita.desai@example.com",
+    "role": "UI/UX Designer",
+    "company": "Design Studio",
+    "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=faces",
+    "message": "Love the attention to detail in your UI/UX work! Your Rome Arte project beautifully combines classical aesthetics with modern web design. The responsive galleries are perfectly executed! ✨",
+    "date": "2024-01-08T16:45:00Z",
+    "likes": 15
+  },
+  {
+    "id": 4,
+    "name": "Vikram Singh",
+    "email": "vikram.singh@example.com",
+    "role": "DevOps Engineer",
+    "company": "Cloud Solutions",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=faces",
+    "message": "Impressive work on the Student Management System! The full-stack implementation shows great attention to both frontend and backend development. Your technical skills are really solid.",
+    "date": "2024-01-05T09:20:00Z",
+    "likes": 9
+  },
+  {
+    "id": 5,
+    "name": "Sarah Johnson",
+    "email": "sarah.johnson@example.com",
+    "role": "Frontend Developer",
+    "company": "Digital Agency",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=faces",
+    "message": "Your portfolio showcases excellent modern web development skills! The animations and user experience are top-notch. Really inspiring work for fellow developers! 💫",
+    "date": "2024-01-03T11:10:00Z",
+    "likes": 7
+  },
+  {
+    "id": 6,
+    "name": "Pratham P Nagekar",
+    "email": "admin@system.com",
+    "role": "RTL Designer",
+    "company": "Samsung Semiconductors",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces",
+    "message": "It was nice seeing this website😊😊",
+    "date": "2025-08-27T16:21:44.657Z",
+    "likes": 0
+  }
+]
