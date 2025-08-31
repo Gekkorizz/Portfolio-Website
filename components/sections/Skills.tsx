@@ -6,46 +6,48 @@ import { Code2, Database, Globe, Smartphone, Cloud, Wrench } from 'lucide-react'
 
 const skillCategories = [
   {
-    title: 'Frontend',
+    title: 'Development',
     icon: Globe,
     color: 'text-blue-600',
     bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    skills: ['React', 'Next.js', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap']
+    skills: [
+      'React', 'Next.js','Tailwind CSS', 'MySQL'
+    ]
   },
   {
-    title: 'Backend',
-    icon: Database,
-    color: 'text-green-600',
-    bgColor: 'bg-green-100 dark:bg-green-900/30',
-    skills: ['Node.js', 'Express.js', 'Python', 'PHP', 'MySQL', 'MongoDB']
-  },
-  {
-    title: 'Security',
-    icon: Smartphone,
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-100 dark:bg-purple-900/30',
-    skills: ['Cryptography', 'AES Encryption', 'RSA', 'JWT', 'Security Auditing', 'Penetration Testing']
-  },
-  {
-    title: 'DevOps & Cloud',
-    icon: Cloud,
+    title: 'DevOps',
+    icon: Wrench,
     color: 'text-orange-600',
     bgColor: 'bg-orange-100 dark:bg-orange-900/30',
-    skills: ['Docker', 'AWS', 'GCP', 'Vercel', 'Jenkins', 'Linux']
+    skills: ['Docker', 'Jenkins', 'Linux']
+  },
+  {
+    title: 'Cloud',
+    icon: Cloud,
+    color: 'text-teal-600',
+    bgColor: 'bg-teal-100 dark:bg-teal-900/30',
+    skills: ['AWS', 'GCP', 'Vercel']
   },
   {
     title: 'Languages',
     icon: Code2,
     color: 'text-red-600',
     bgColor: 'bg-red-100 dark:bg-red-900/30',
-    skills: ['JavaScript', 'Python', 'Java', 'C++', 'PHP', 'SQL']
+    skills: ['Python', 'Java', 'C']
   },
   {
-    title: 'Tools & Design',
+    title: 'Design',
+    icon: Smartphone,
+    color: 'text-pink-600',
+    bgColor: 'bg-pink-100 dark:bg-pink-900/30',
+    skills: ['Figma', 'Photoshop', 'Blender']
+  },
+  {
+    title: 'Code Editors',
     icon: Wrench,
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-100 dark:bg-indigo-900/30',
-    skills: ['VSCode', 'IntelliJ IDEA', 'Figma', 'Photoshop', 'Blender', 'DataDog']
+    skills: ['VSCode', 'IntelliJ IDEA', 'DataDog']
   }
 ]
 
@@ -54,7 +56,6 @@ const softSkills = [
   'Creative Thinking',
   'Team Collaboration',
   'Project Management',
-  'UI/UX Design',
   'Technical Writing'
 ]
 

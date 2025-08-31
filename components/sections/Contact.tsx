@@ -32,44 +32,15 @@ export function Contact() {
     threshold: 0.1,
   })
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [quickPrompts, setQuickPrompts] = useState<string[]>([])
 
-  // Generate random prompts on component mount
   useEffect(() => {
     setQuickPrompts(getRandomPrompts())
   }, [])
 
   const handleQuickPrompt = (prompt: string) => {
-    setFormData(prev => ({ ...prev, message: prompt }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' })
-    setIsSubmitting(false)
-    
-    // Show success message (you can implement a toast notification here)
-    alert('Message sent successfully! I\'ll get back to you soon.')
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
+    const messageInput = document.getElementById('message') as HTMLTextAreaElement
+    if (messageInput) messageInput.value = prompt
   }
 
   return (
@@ -224,89 +195,71 @@ export function Contact() {
 
                   {/* Contact Form */}
                   <div className="flex-1">
-                    <form onSubmit={handleSubmit} className="space-y-6 h-full flex flex-col">
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <form action="https://formspree.io/f/mwpnldda" method="POST" className="space-y-6 h-full flex flex-col">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <label htmlFor="name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
+                            Name
+                          </label>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                            placeholder="Your name"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
+                            Email
+                          </label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                            placeholder="your@email.com"
+                          />
+                        </div>
+                      </div>
+
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                          Name
+                        <label htmlFor="subject" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
+                          Subject
                         </label>
                         <input
                           type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
+                          id="subject"
+                          name="subject"
                           required
                           className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                          placeholder="Your name"
+                          placeholder="What's this about?"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                          Email
+
+                      <div className="flex-1 flex flex-col">
+                        <label htmlFor="message" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
+                          Message
                         </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
+                        <textarea
+                          id="message"
+                          name="message"
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                          placeholder="your@email.com"
+                          rows={8}
+                          className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none flex-1"
+                          placeholder="Tell me about your project or just say hello!"
                         />
                       </div>
-                    </div>
 
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                        placeholder="What's this about?"
-                      />
-                    </div>
-
-                    <div className="flex-1 flex flex-col">
-                      <label htmlFor="message" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={8}
-                        className="w-full px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none flex-1"
-                        placeholder="Tell me about your project or just say hello!"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed mt-auto"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          <span>Sending...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Send size={18} />
-                          <span>Send Message</span>
-                        </>
-                      )}
-                    </button>
+                      <button
+                        type="submit"
+                        className="w-full btn-primary flex items-center justify-center space-x-2 mt-auto"
+                      >
+                        <Send size={18} />
+                        <span>Send Message</span>
+                      </button>
                     </form>
                   </div>
                 </div>

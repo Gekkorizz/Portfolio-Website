@@ -83,11 +83,13 @@ export function LatestBlogs() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(fallbackPosts)
   const [loading, setLoading] = useState(true)
 
-  // Fetch latest tech articles from internal API route
+  // Fetch latest tech articles from Dev.to API directly
   useEffect(() => {
     const fetchTechArticles = async () => {
       try {
         setLoading(true)
+        
+        // Using the internal API route that fetches from Dev.to
         const response = await fetch('/api/blogs')
 
         if (!response.ok) {
@@ -99,21 +101,23 @@ export function LatestBlogs() {
         // Take only first 3 articles for this component
         const limitedArticles = articles.slice(0, 3)
 
+        // Format posts for display
         const formattedPosts: BlogPost[] = limitedArticles.map(article => ({
           title: article.title,
           excerpt: article.description || 'Click to read the full article on Dev.to',
           image: article.cover_image || 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop',
-          date: article.published_at,
+          date: new Date(article.published_at).toISOString(),
           readTime: `${article.reading_time_minutes || 5} min read`,
           category: article.tag_list[0] || 'Tech',
           url: article.url,
           author: article.user.name,
-          authorImage: article.user.profile_image
+          authorImage: article.user.profile_image || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces'
         }))
 
         setBlogPosts(formattedPosts)
       } catch (err) {
         console.error('Error fetching articles:', err)
+        // If API fails, use fallback posts
         setBlogPosts(fallbackPosts)
       } finally {
         setLoading(false)

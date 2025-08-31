@@ -86,7 +86,7 @@ export function Navigation() {
             
             <div className="flex items-center space-x-2">
               <a
-                href="https://github.com/lakshayrai"
+                href="https://www.github.com/Gekkorizz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
@@ -95,7 +95,7 @@ export function Navigation() {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/lakshayrai"
+                href="https://www.linkedin.com/in/lakshay-rai-3b6889258/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
