@@ -6,58 +6,58 @@ import { Award, ExternalLink, Calendar, CheckCircle } from 'lucide-react'
 
 const certifications = [
   {
-    title: 'AWS Certified Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: '2024',
-    description: 'Foundational understanding of AWS cloud services, security, and pricing models.',
-    logo: '☁️',
-    link: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
-    status: 'Recommended'
+    title: 'Google UX Design Professional Certificate',
+    issuer: 'Google via Coursera',
+    date: '2025',
+    description: 'Comprehensive certification in UX design principles, including wireframing, prototyping, user research, and creating high-fidelity designs.',
+    logo: '🎨',
+    link: 'https://www.coursera.org/professional-certificates/google-ux-design',
+    status: 'Completed'
   },
   {
-    title: 'Google Cloud Digital Leader',
-    issuer: 'Google Cloud',
-    date: '2024',
-    description: 'Understanding of cloud concepts and Google Cloud products and services.',
-    logo: '🌐',
-    link: 'https://cloud.google.com/certification/cloud-digital-leader',
-    status: 'Recommended'
+    title: 'Introduction to Figma',
+    issuer: 'LinkedIn Learning',
+    date: '2025',
+    description: 'Essential training in Figma covering UI/UX design fundamentals, prototyping, and collaborative design workflows.',
+    logo: '🖌️',
+    link: 'https://www.linkedin.com/learning/certificates/',
+    status: 'Completed'
   },
   {
-    title: 'Oracle Java SE 11 Developer',
-    issuer: 'Oracle',
-    date: '2023',
-    description: 'Proficiency in Java programming language and object-oriented programming concepts.',
+    title: 'NodeJS Essential Training',
+    issuer: 'LinkedIn Learning',
+    date: '2025',
+    description: 'Comprehensive course on Node.js covering server-side JavaScript, npm ecosystem, and building RESTful APIs.',
+    logo: '📦',
+    link: 'https://www.linkedin.com/learning/certificates/',
+    status: 'Completed'
+  },
+  {
+    title: 'SpringBoot Development',
+    issuer: 'Udemy',
+    date: '2025',
+    description: 'Deep dive into Spring Boot framework for building enterprise-grade Java applications with microservices architecture.',
     logo: '☕',
-    link: 'https://education.oracle.com/java-se-11-developer/pexam_1Z0-819',
-    status: 'Recommended'
+    link: 'https://www.udemy.com/certificate/',
+    status: 'Completed'
   },
   {
-    title: 'Microsoft Azure Fundamentals',
-    issuer: 'Microsoft',
-    date: '2024',
-    description: 'Foundational knowledge of cloud services and Microsoft Azure platform.',
-    logo: '🔷',
-    link: 'https://docs.microsoft.com/en-us/learn/certifications/azure-fundamentals/',
-    status: 'Recommended'
+    title: 'DataDog Monitoring & Observability',
+    issuer: 'Udemy',
+    date: '2025',
+    description: 'Implementation of monitoring solutions using DataDog for application performance, logs, and infrastructure metrics.',
+    logo: '📊',
+    link: 'https://www.udemy.com/certificate/',
+    status: 'Completed'
   },
   {
-    title: 'CompTIA Security+',
-    issuer: 'CompTIA',
-    date: '2023',
-    description: 'Cybersecurity fundamentals including network security, compliance, and operational security.',
-    logo: '🛡️',
-    link: 'https://www.comptia.org/certifications/security',
-    status: 'Recommended'
-  },
-  {
-    title: 'MongoDB Developer Associate',
-    issuer: 'MongoDB',
-    date: '2023',
-    description: 'Database design, development, and administration using MongoDB.',
-    logo: '🍃',
-    link: 'https://university.mongodb.com/certification',
-    status: 'Recommended'
+    title: 'Apache Kafka Event Streaming',
+    issuer: 'Udemy',
+    date: '2025',
+    description: 'Event-driven architecture design with Apache Kafka for scalable, high-throughput messaging and data processing.',
+    logo: '📡',
+    link: 'https://www.udemy.com/certificate/',
+    status: 'Completed'
   }
 ]
 

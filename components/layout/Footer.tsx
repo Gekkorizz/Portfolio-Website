@@ -85,12 +85,9 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-dark-200 dark:border-dark-800 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-12 pt-8 border-t border-dark-200 dark:border-dark-800 flex items-center">
           <p className="text-dark-600 dark:text-dark-400 text-sm">
             © {new Date().getFullYear()} Lakshay Rai. All rights reserved.
-          </p>
-          <p className="text-dark-600 dark:text-dark-400 text-sm flex items-center mt-4 md:mt-0">
-            Built with <Heart size={16} className="mx-1 text-red-500" /> using Next.js & Tailwind CSS
           </p>
         </div>
       </div>

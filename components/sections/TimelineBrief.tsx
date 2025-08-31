@@ -5,60 +5,59 @@ import { useInView } from 'react-intersection-observer'
 import { Calendar, MapPin, GraduationCap, Briefcase, Trophy } from 'lucide-react'
 import { useRef } from 'react'
 
-const timelineData = [
-  {
-    type: 'education',
-    icon: GraduationCap,
-    title: 'B.Tech Computer Science & Engineering',
-    company: 'Bangalore Institute of Technology',
-    location: 'Bangalore, Karnataka',
-    period: '2022 - Present',
-    description: 'Currently pursuing Bachelor of Technology in Computer Science with focus on software development and emerging technologies.',
-    color: 'bg-indigo-500'
-  },
-  {
-    type: 'award',
-    icon: Trophy,
-    title: 'UI/UX Design Competition Winner',
-    company: 'College Technical Fest',
-    location: 'Bangalore, Karnataka',
-    period: '2023',
-    description: 'Won first place in UI/UX design competition for innovative mobile app interface design.',
-    color: 'bg-yellow-500'
-  },
-  {
-    type: 'work',
-    icon: Briefcase,
-    title: 'Freelance Developer & Project Lead',
-    company: 'Independent Projects',
-    location: 'Remote',
-    period: '2023 - Present',
-    description: 'Leading development of multiple open-source projects focusing on web development, security tools, and educational platforms.',
-    color: 'bg-green-500'
-  }
-]
+export default function TimelineBrief() {
+  const timelineData = [
+    {
+      type: 'work',
+      icon: Briefcase,
+      title: 'Software Developer Intern',
+      company: 'Fidelity Investments',
+      location: 'Bengaluru, onsite',
+      period: '05/25 - 07/25',
+      description:
+        'Improved log processing and automated deployment. Built monitoring dashboards and participated in Agile processes.',
+      color: 'bg-green-500'
+    },
+    {
+      type: 'award',
+      icon: Trophy,
+      title: 'UI/UX Design Competition Winner',
+      company: 'IEEE BIT',
+      location: 'Bangalore, Karnataka',
+      period: '2023',
+      description: 'Won first place for innovative website interface design for museums in Rome.',
+      color: 'bg-yellow-500'
+    },
+    {
+      type: 'education',
+      icon: GraduationCap,
+      title: 'B.Tech Computer Science & Engineering',
+      company: 'Bangalore Institute of Technology',
+      location: 'Bangalore, Karnataka',
+      period: '2022 - Present',
+      description: 'Pursuing B.Tech in Computer Science, focused on software development and new technologies.',
+      color: 'bg-indigo-500'
+    }
+  ]
 
-export function TimelineBrief() {
-  const timelineRef = useRef<HTMLDivElement>(null)
+  const timelineRef = useRef<HTMLDivElement>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   // Track scroll progress within the timeline section
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 0.7", "end 0.3"]
-  })
+  });
 
   // Transform scroll progress to line height (0% to 100%)
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-  
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   // Transform scroll progress for the moving dot position
-  const dotPosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-  
+  const dotPosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   // Transform scroll progress for dot opacity (fade in early, fade out late)
-  const dotOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
+  const dotOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
 
   return (
     <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">

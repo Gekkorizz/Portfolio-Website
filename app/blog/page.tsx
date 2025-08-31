@@ -1,11 +1,35 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BookOpen, Calendar, Clock, Mail, ExternalLink } from 'lucide-react'
+import { BookOpen, Calendar, Clock, ExternalLink } from 'lucide-react'
 import { CustomArrow } from '@/components/ui/CustomArrow'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+
+// Types for API responses
+interface DevToArticle {
+  id: number
+  title: string
+  description?: string
+  url: string
+  published_at: string
+  published_timestamp?: string
+  cover_image?: string | null
+  reading_time_minutes?: number
+  tag_list?: string[] | string
+  tags?: string
+  user?: {
+    name?: string
+    username?: string
+    profile_image?: string
+  }
+  // Added credit fields
+  source?: string
+  sourceUrl?: string
+  sourceCredit?: string
+  originalUrl?: string
+}
 
 interface BlogPost {
   title: string
@@ -14,96 +38,122 @@ interface BlogPost {
   date: string
   readTime: string
   category: string
-  slug: string
+  url: string
   author: string
+  authorImage: string
+  source?: string
+  sourceUrl?: string
+  sourceCredit?: string
 }
 
-// Static blog posts
-const blogPosts: BlogPost[] = [
+// Fallback blog posts in case API fails
+const fallbackPosts: BlogPost[] = [
   {
-    title: 'Building a Student Management System with React and Node.js',
-    excerpt: 'A deep dive into creating a comprehensive student portal with modern web technologies. Learn about authentication, database design, and user experience considerations for educational platforms.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop',
-    date: '2024-01-20',
-    readTime: '12 min read',
-    category: 'Full Stack',
-    slug: 'student-management-system-react-nodejs',
-    author: 'Lakshay Rai'
-  },
-  {
-    title: 'Implementing Advanced Encryption in Python Applications',
-    excerpt: 'Explore cryptographic techniques and security best practices. Learn how to implement AES encryption, RSA key exchange, and secure file handling in Python applications.',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-    date: '2024-01-15',
-    readTime: '15 min read',
-    category: 'Security',
-    slug: 'advanced-encryption-python',
-    author: 'Lakshay Rai'
-  },
-  {
-    title: 'Creating Responsive Art Galleries with Modern CSS',
-    excerpt: 'Design beautiful, responsive art galleries using CSS Grid, Flexbox, and modern layout techniques. Perfect for showcasing digital art and creative portfolios.',
-    image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop',
-    date: '2024-01-10',
-    readTime: '10 min read',
-    category: 'CSS',
-    slug: 'responsive-art-galleries-css',
-    author: 'Lakshay Rai'
-  },
-  {
-    title: 'File Management Automation with Python',
-    excerpt: 'Build powerful file management utilities using Python. Learn about directory traversal, pattern matching, and creating efficient backup solutions.',
-    image: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop',
-    date: '2024-01-05',
+    title: 'Modern React Development Patterns',
+    excerpt: 'Explore the latest patterns and best practices in React development for 2024.',
+    image: 'https://res.cloudinary.com/practicaldev/image/fetch/s--6zDMZZ3H--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7vxkr9y1zuh5zfytw0ei.jpg',
+    date: '2025-01-15',
     readTime: '8 min read',
-    category: 'Python',
-    slug: 'file-management-automation-python',
-    author: 'Lakshay Rai'
+    category: 'React',
+    url: 'https://dev.to',
+    author: 'Tech Community',
+    authorImage: 'https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/473/b22b57a7-039d-4f32-b6df-c512fe99.jpeg'
   },
   {
-    title: 'Modern JavaScript ES6+ Features for Beginners',
-    excerpt: 'Master the essential JavaScript features that every developer should know. From arrow functions to async/await, destructuring, and modules.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
-    date: '2023-12-28',
-    readTime: '9 min read',
+    title: 'JavaScript Performance Optimization',
+    excerpt: 'Learn advanced techniques to optimize JavaScript performance in modern web applications.',
+    image: 'https://res.cloudinary.com/practicaldev/image/fetch/s--YM5kxjlz--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1rjqzwxno8b6jrszz7e7.jpg',
+    date: '2025-01-12',
+    readTime: '10 min read',
     category: 'JavaScript',
-    slug: 'modern-javascript-es6-features',
-    author: 'Lakshay Rai'
+    url: 'https://dev.to',
+    author: 'Dev Community',
+    authorImage: 'https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/473/b22b57a7-039d-4f32-b6df-c512fe99.jpeg'
   },
   {
-    title: 'Getting Started with Docker for Developers',
-    excerpt: 'Learn containerization fundamentals with Docker. Understand how to create, manage, and deploy applications using containers for consistent development environments.',
-    image: 'https://images.unsplash.com/photo-1605745341112-85968b19335a?w=600&h=400&fit=crop',
-    date: '2023-12-20',
-    readTime: '11 min read',
-    category: 'DevOps',
-    slug: 'getting-started-docker-developers',
-    author: 'Lakshay Rai'
+    title: 'Building Secure Web Applications',
+    excerpt: 'Essential security practices every developer should implement in their web applications.',
+    image: 'https://res.cloudinary.com/practicaldev/image/fetch/s--O3hyIcFH--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d3owirzd7vprdkqvpj2y.jpg',
+    date: '2025-01-10',
+    readTime: '12 min read',
+    category: 'Security',
+    url: 'https://dev.to',
+    author: 'Security Expert',
+    authorImage: 'https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/473/b22b57a7-039d-4f32-b6df-c512fe99.jpeg'
   }
 ]
 
 export default function BlogPage() {
-  const [email, setEmail] = useState('')
-  const [isSubscribing, setIsSubscribing] = useState(false)
-  const [subscriptionMessage, setSubscriptionMessage] = useState('')
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [loading, setLoading] = useState(true)
 
-  // Handle newsletter subscription
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubscribing(true)
+  // Fetch blog posts from Dev.to API
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        setLoading(true)
+        console.log('Fetching blog posts from API...')
+        
+        const response = await fetch('/api/blogs')
 
-    try {
-      // Simulate newsletter subscription (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 2000))
+        if (!response.ok) {
+          console.error(`API responded with status: ${response.status}`)
+          throw new Error(`Failed to fetch articles: ${response.status}`)
+        }
 
-      setSubscriptionMessage('🎉 Successfully subscribed! You\'ll receive the latest tech insights.')
-      setEmail('')
-    } catch (err) {
-      setSubscriptionMessage('❌ Subscription failed. Please try again.')
-    } finally {
-      setIsSubscribing(false)
+        const articles: DevToArticle[] = await response.json()
+        console.log(`Received ${articles.length} articles from API`)
+        
+        if (!articles || articles.length === 0) {
+          console.warn('No articles returned from API, using fallback posts')
+          setBlogPosts(fallbackPosts)
+          return
+        }
+        
+        // Format the articles for display
+        const formattedPosts: BlogPost[] = articles.map(article => {
+          // Handle tag_list which can be string or array
+          let firstTag = 'Tech';
+          if (article.tag_list) {
+            if (Array.isArray(article.tag_list) && article.tag_list.length > 0) {
+              firstTag = article.tag_list[0];
+            } else if (typeof article.tag_list === 'string' && article.tag_list.length > 0) {
+              firstTag = article.tag_list.split(',')[0].trim();
+            }
+          } else if (article.tags && typeof article.tags === 'string') {
+            firstTag = article.tags.split(',')[0].trim();
+          }
+          
+          // Get published date
+          const publishDate = article.published_timestamp || article.published_at || new Date().toISOString();
+          
+          return {
+            title: article.title || 'Untitled Article',
+            excerpt: article.description || 'Click to read the full article on Dev.to',
+            image: article.cover_image || 'https://res.cloudinary.com/practicaldev/image/fetch/s--6zDMZZ3H--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7vxkr9y1zuh5zfytw0ei.jpg',
+            date: publishDate,
+            readTime: `${article.reading_time_minutes || 5} min read`,
+            category: firstTag,
+            url: article.originalUrl || article.url,
+            author: article.user?.name || 'Dev.to Author',
+            authorImage: article.user?.profile_image || 'https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/473/b22b57a7-039d-4f32-b6df-c512fe99.jpeg',
+            source: article.source || 'DEV.to',
+            sourceUrl: article.sourceUrl || 'https://dev.to',
+            sourceCredit: article.sourceCredit || 'Content sourced from DEV.to'
+          };
+        });
+
+        setBlogPosts(formattedPosts)
+      } catch (error) {
+        console.error('Error fetching blog posts:', error)
+        setBlogPosts(fallbackPosts)
+      } finally {
+        setLoading(false)
+      }
     }
-  }
+
+    fetchBlogPosts()
+  }, [])
 
   return (
     <div className="pt-20">
@@ -148,136 +198,141 @@ export default function BlogPage() {
             </motion.p>
           </motion.div>
 
-          {/* Blog Posts Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.slug}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1, duration: 0.8 }}
-                className="card overflow-hidden hover:scale-105 transition-all duration-300 group"
-              >
-                {/* Post Image */}
-                <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Post Content */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between text-sm text-dark-500 dark:text-dark-400 mb-3">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-1">
-                        <Calendar size={14} />
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Clock size={14} />
-                        <span>{post.readTime}</span>
-                      </div>
+          {/* Loading State */}
+          {loading && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="card overflow-hidden animate-pulse">
+                  <div className="aspect-video bg-dark-200 dark:bg-dark-700"></div>
+                  <div className="p-6 space-y-3">
+                    <div className="h-4 bg-dark-200 dark:bg-dark-700 rounded w-3/4"></div>
+                    <div className="h-3 bg-dark-200 dark:bg-dark-700 rounded w-1/2"></div>
+                    <div className="space-y-2">
+                      <div className="h-3 bg-dark-200 dark:bg-dark-700 rounded"></div>
+                      <div className="h-3 bg-dark-200 dark:bg-dark-700 rounded w-5/6"></div>
                     </div>
-                    <span className="text-xs text-primary-600 dark:text-primary-400">
-                      by {post.author}
-                    </span>
                   </div>
-
-                  <h2 className="text-xl font-bold text-dark-900 dark:text-dark-100 mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
-                    {post.title}
-                  </h2>
-
-                  <p className="text-dark-600 dark:text-dark-400 mb-4 leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group/link"
-                  >
-                    <span>Read More</span>
-                    <CustomArrow
-                      size={16}
-                      className="group-hover/link:translate-x-1 transition-transform duration-200"
-                    />
-                  </Link>
                 </div>
-              </motion.article>
-            ))}
-          </div>
-
-          {/* Newsletter Signup */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            className="mt-16 text-center"
-          >
-            <div className="card p-8 max-w-2xl mx-auto">
-              <div className="flex items-center justify-center space-x-2 mb-4">
-                <Mail className="text-primary-500" size={24} />
-                <h3 className="text-2xl font-bold text-dark-900 dark:text-dark-100">
-                  Tech Newsletter
-                </h3>
-              </div>
-              <p className="text-dark-600 dark:text-dark-400 mb-6">
-                Subscribe to get the latest tech articles, tutorials, and industry insights delivered to your inbox weekly.
-              </p>
-
-              {subscriptionMessage ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-4 rounded-lg bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 mb-6"
-                >
-                  <p className="text-green-800 dark:text-green-200">{subscriptionMessage}</p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="flex-1 px-4 py-3 rounded-lg border border-dark-300 dark:border-dark-600 bg-white dark:bg-dark-800 text-dark-900 dark:text-dark-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubscribing}
-                    className="btn-primary whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
-                  >
-                    {isSubscribing ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>Subscribing...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Mail size={16} />
-                        <span>Subscribe</span>
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
-
-              <p className="text-xs text-dark-500 dark:text-dark-400 mt-4">
-                Join 1000+ developers getting weekly tech insights. Unsubscribe anytime.
-              </p>
+              ))}
             </div>
-          </motion.div>
+          )}
+
+          {/* Blog Posts Grid */}
+          {!loading && (
+            <>
+              {blogPosts.length > 0 ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {blogPosts.map((post, index) => (
+                    <motion.article
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8 + index * 0.1, duration: 0.8 }}
+                      className="card overflow-hidden hover:scale-105 transition-all duration-300 group"
+                    >
+                      {/* Post Image */}
+                      <div className="relative aspect-video overflow-hidden">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          unoptimized
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Post Content */}
+                      <div className="p-6">
+                        <div className="flex items-center justify-between text-sm text-dark-500 dark:text-dark-400 mb-3">
+                          <div className="flex items-center space-x-4">
+                            <div className="flex items-center space-x-1">
+                              <Calendar size={14} />
+                              <span>{new Date(post.date).toLocaleDateString()}</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <Clock size={14} />
+                              <span>{post.readTime}</span>
+                            </div>
+                          </div>
+                          <span className="text-xs text-primary-600 dark:text-primary-400">
+                            by {post.author}
+                          </span>
+                        </div>
+
+                        <h2 className="text-xl font-bold text-dark-900 dark:text-dark-100 mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
+                          {post.title}
+                        </h2>
+
+                        <p className="text-dark-600 dark:text-dark-400 mb-4 leading-relaxed line-clamp-3">
+                          {post.excerpt}
+                        </p>
+
+                        <div className="flex flex-col space-y-3">
+                          <a
+                            href={post.url}
+                            target="_blank"
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group/link"
+                          >
+                            <span>Read Article</span>
+                            <ExternalLink
+                              size={16}
+                              className="group-hover/link:translate-x-1 transition-transform duration-200"
+                            />
+                          </a>
+                          
+                          <div className="flex items-center space-x-2 mt-2">
+                            <a 
+                              href={post.sourceUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-xs text-dark-400 dark:text-dark-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                            >
+                              Content from {post.source}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.article>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="space-y-4"
+                  >
+                    <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto">
+                      <BookOpen size={32} className="text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold">No blog posts found</h3>
+                    <p className="text-dark-600 dark:text-dark-400 max-w-md mx-auto">
+                      There was an issue fetching blog posts from the Dev.to API. Please try again later or check the console for more details.
+                    </p>
+                    <button 
+                      onClick={() => window.location.reload()}
+                      className="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md inline-flex items-center space-x-2 transition"
+                    >
+                      <span>Refresh</span>
+                      <CustomArrow />
+                    </button>
+                  </motion.div>
+                </div>
+              )}
+            </>
+          )}
+
         </div>
       </section>
     </div>
