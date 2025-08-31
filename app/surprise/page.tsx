@@ -234,13 +234,14 @@ print(len(result))`,
           <button
             onClick={() => {
               if (typeof window !== 'undefined') {
-                window.history.back()
+                // Use direct navigation to home instead of history.back()
+                window.location.href = '/'
               }
             }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-dark-700 dark:text-dark-200 mt-14"
           >
             <ArrowLeft size={20} />
-            Back to Portfolio
+            Back to Home
           </button>
         </motion.div>
 

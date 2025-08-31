@@ -45,6 +45,8 @@ export default function RootLayout({
         <link rel="preload" href="/projects" as="document" />
         <link rel="preload" href="/blog" as="document" />
         <link rel="preload" href="/contact" as="document" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-16x16.svg" type="image/svg+xml" sizes="16x16" />
       </head>
       <body className={inter.className}>
         <ThemeProvider>
@@ -53,9 +55,7 @@ export default function RootLayout({
             <div className="min-h-screen flex flex-col">
               <Navigation />
               <main className="flex-1">
-                <Suspense fallback={<LoadingScreen />}>
-                  {children}
-                </Suspense>
+                {children}
               </main>
               <Footer />
             </div>

@@ -14,19 +14,25 @@ type NavigationContextType = {
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined)
 
 export function useNavigation() {
-  const context = useContext(NavigationContext)
+  // This is critical for server components or when the context is not available
+  // Check if we're running in a browser environment before accessing React Context
+  const isClient = typeof window !== 'undefined'
+  
+  // Only try to access the context in client components
+  const context = isClient ? useContext(NavigationContext) : undefined
+  
   if (!context) {
-    // Return fallback functions for server-side rendering
+    // Return fallback functions for server-side rendering or when context is not available
     return {
       isLoading: false,
       setLoading: () => {},
       navigateWithLoading: (href: string) => {
-        if (typeof window !== 'undefined') {
+        if (isClient) {
           window.location.href = href
         }
       },
       reloadWithLoading: () => {
-        if (typeof window !== 'undefined') {
+        if (isClient) {
           window.location.reload()
         }
       },

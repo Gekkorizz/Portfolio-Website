@@ -79,23 +79,29 @@ export function LoadingScreen() {
                 <motion.button
                   onClick={() => {
                     if (typeof window !== 'undefined') {
-                      window.location.href = '/surprise'
+                      window.location.href = '/surprise?skipLoading=true'
                     }
-                  }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                  className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex items-center justify-center hover:scale-110 transition-transform duration-200 cursor-pointer"
-                  aria-label="Discover surprise"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+                    className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-black via-dark-900 to-blue-900 flex items-center justify-center hover:scale-110 transition-transform duration-200 cursor-pointer relative overflow-visible"
+                    aria-label="Discover surprise"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* Blending Glow Effect */}
+                    <span className="absolute inset-0 rounded-full pointer-events-none"
+                      style={{
+                        boxShadow: '0 0 32px 16px rgba(10,20,40,0.25), 0 0 0 8px rgba(0,0,0,0.08)'
+                      }}
+                    />
+                    <motion.div
                     animate={{ rotate: -360 }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
                     className="text-white"
-                  >
-                    <LRLogo size={32} />
-                  </motion.div>
+                    >
+                    <LRLogo size={48} />
+                    </motion.div>
                 </motion.button>
                 
                 {/* Floating Icons */}
