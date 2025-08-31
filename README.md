@@ -1,4 +1,4 @@
-# Modern Developer Portfolio
+# 🚀 Lakshay Rai: Modern Developer Portfolio
 
 A sleek, responsive portfolio built with Next.js, TypeScript, and Tailwind CSS. This project isn't just a static site—it's a dynamic showcase of my skills, projects, and passion for creating impactful digital solutions. This portfolio is designed to be a starting point for any developer. Clone it, customize it, and make it your own!
 
@@ -97,11 +97,10 @@ This project is licensed under the MIT License.
 
 ## 🙏 Support
 
-If you have any questions or need help customizing the portfolio, feel free to reach out:
-- Email: hello@johndoe.dev
-- Twitter: [@johndoe](https://twitter.com/johndoe)
-- LinkedIn: [John Doe](https://linkedin.com/in/johndoe)
+If you have any questions, need help with customization, or just want to connect, feel free to reach out to me:
+- Email: 1bi22cs080@bit-bangalore.edu.in
+- LinkedIn: [Lakshay Rai](https://www.linkedin.com/in/lakshay-rai-3b6889258/)
 
 ---
 
-**Built with ❤️ by [John Doe](https://johndoe.dev)**
+**Crafted with passion by Lakshay Rai**
