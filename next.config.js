@@ -31,12 +31,6 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'dev-to-uploads.s3.amazonaws.com',
         port: '',
         pathname: '/**',

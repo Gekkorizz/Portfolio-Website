@@ -1,5 +1,6 @@
 import { ProjectsGrid } from '@/components/sections/ProjectsGrid'
 import { ProjectsHero } from '@/components/sections/ProjectsHero'
+import { UIUXShowcase } from '@/components/sections/UIUXShowcase'
 import { LatestBlogs } from '@/components/sections/LatestBlogs'
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function ProjectsPage() {
     <>
       <ProjectsHero />
       <ProjectsGrid />
+      <UIUXShowcase />
       <LatestBlogs />
     </>
   )
