@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code2, Database, Globe, Smartphone, Cloud, Wrench } from 'lucide-react'
+import { Code2, Database, Globe, Smartphone, Cloud, Wrench, Users } from 'lucide-react'
 
 const skillCategories = [
   {
@@ -48,15 +48,14 @@ const skillCategories = [
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-100 dark:bg-indigo-900/30',
     skills: ['VSCode', 'IntelliJ IDEA', 'DataDog']
+  },
+  {
+    title: 'Soft Skills',
+    icon: Users,
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+    skills: ['Problem Solving', 'Creative Thinking', 'Team Collaboration', 'Project Management', 'Technical Writing']
   }
-]
-
-const softSkills = [
-  'Problem Solving',
-  'Creative Thinking',
-  'Team Collaboration',
-  'Project Management',
-  'Technical Writing'
 ]
 
 export function Skills() {
@@ -104,8 +103,8 @@ export function Skills() {
             </motion.p>
           </div>
 
-          {/* Technical Skills */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Skills Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => {
               const Icon = category.icon
               return (
@@ -145,31 +144,6 @@ export function Skills() {
               )
             })}
           </div>
-
-          {/* Soft Skills */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            className="text-center"
-          >
-            <h3 className="text-2xl font-bold text-dark-900 dark:text-dark-100 mb-8">
-              Soft Skills
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {softSkills.map((skill, index) => (
-                <motion.div
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 1.6 + index * 0.1, duration: 0.6 }}
-                  className="px-6 py-3 glass rounded-full font-medium text-dark-700 dark:text-dark-300 hover:scale-105 transition-transform duration-200"
-                >
-                  {skill}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -67,25 +67,40 @@ export function About() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="space-y-6 text-justify"
             >
+              {/* Concise Bio - 2-3 sentences */}
               <p className="text-lg text-dark-600 dark:text-dark-400 leading-relaxed">
-                I'm a passionate Computer Science student at Bangalore Institute of Technology with a strong
-                focus on software development, security, and innovative problem-solving. My journey began with
-                curiosity about how technology works, and has evolved into creating meaningful applications
-                that solve real-world problems.
+                I'm a passionate Computer Science student at Bangalore Institute of Technology, 
+                transforming ideas into innovative applications that solve real-world problems. 
+                My journey combines software development, cybersecurity, and user experience design.
               </p>
 
-              <p className="text-lg text-dark-600 dark:text-dark-400 leading-relaxed">
-                Currently pursuing my B.Tech in Computer Science & Engineering, I've developed expertise in
-                full-stack web development, cybersecurity, and user experience design.
-              </p>
+              {/* Key Focus Areas - Bulleted List */}
+              <div className="space-y-3">
+                <h4 className="text-base font-semibold text-dark-800 dark:text-dark-200">
+                  Current Focus:
+                </h4>
+                <ul className="space-y-2 text-lg text-dark-600 dark:text-dark-400">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-primary-500 mt-1">•</span>
+                    <span>Pursuing B.Tech in Computer Science & Engineering</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-primary-500 mt-1">•</span>
+                    <span>Developing expertise in full-stack web development and cybersecurity</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-primary-500 mt-1">•</span>
+                    <span>Active in hackathons and exploring AI/machine learning innovations</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-primary-500 mt-1">•</span>
+                    <span>Contributing to open source and sharing knowledge with the developer community</span>
+                  </li>
+                </ul>
+              </div>
 
-              <p className="text-lg text-dark-600 dark:text-dark-400 leading-relaxed">
-                When I'm not coding, you'll find me working on personal projects, participating in hackathons,
-                or exploring the latest developments in AI and machine learning. I believe in continuous learning
-                and sharing knowledge with the developer community.
-              </p>
-
-              <div className="flex flex-wrap gap-3 pt-4">
+              {/* Expertise Badges - Keep existing */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4">
                 <span className="px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium">
                   Full Stack Developer
                 </span>
@@ -108,9 +123,17 @@ export function About() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="space-y-6 mb-40"
             >
-              <h3 className="text-xl font-semibold text-dark-900 dark:text-dark-100 mb-6 text-center">
-                When I'm not coding...
-              </h3>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <h3 className="text-sm font-semibold text-dark-600 dark:text-dark-400 uppercase tracking-wider">
+                    Current Status
+                  </h3>
+                </div>
+                <h4 className="text-xl font-semibold text-dark-900 dark:text-dark-100 text-center">
+                  When I'm not coding...
+                </h4>
+              </div>
               
               <div className="flex justify-center items-center">
                 {interests.map((interest, index) => {

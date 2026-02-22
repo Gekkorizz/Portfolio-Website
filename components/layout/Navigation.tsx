@@ -4,16 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Download, Github, Linkedin } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
-import { useNavigation } from '@/components/providers/NavigationProvider'
 import { LRLogo } from '@/components/ui/LRLogo'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Blog', href: '/blog' },
   { name: 'Toolbox', href: '/toolbox' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -22,7 +19,6 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
-  const { reloadWithLoading, navigateWithLoading } = useNavigation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,26 +39,20 @@ export function Navigation() {
       <div className="container-max section-padding py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button
-            onClick={() => {
-              if (pathname === '/') {
-                navigateWithLoading('/surprise')
-              } else {
-                navigateWithLoading('/')
-              }
-            }}
+          <Link
+            href={pathname === '/' ? '/surprise' : '/'}
             className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-200 cursor-pointer"
             aria-label="Go to home or discover surprise"
           >
             <LRLogo size={32} className="text-gradient" />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => navigateWithLoading(item.href)}
+                href={item.href}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400 ${
                   pathname === item.href
                     ? 'text-primary-600 dark:text-primary-400'
@@ -76,7 +66,7 @@ export function Navigation() {
                     className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary-600 dark:bg-primary-400"
                   />
                 )}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -136,12 +126,10 @@ export function Navigation() {
             >
               <div className="flex flex-col space-y-4">
                 {navigation.map((item) => (
-                  <button
+                  <Link
                     key={item.name}
-                    onClick={() => {
-                      setIsOpen(false)
-                      navigateWithLoading(item.href)
-                    }}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
                     className={`px-3 py-2 text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400 text-left ${
                       pathname === item.href
                         ? 'text-primary-600 dark:text-primary-400'
@@ -149,7 +137,7 @@ export function Navigation() {
                     }`}
                   >
                     {item.name}
-                  </button>
+                  </Link>
                 ))}
                 
                 <div className="flex items-center justify-between pt-4 border-t border-dark-200 dark:border-dark-700">

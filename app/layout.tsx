@@ -5,9 +5,6 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { NavigationProvider } from '@/components/providers/NavigationProvider'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
-import { PagePreloader } from '@/components/layout/PagePreloader'
-import { Suspense } from 'react'
-import { LoadingScreen } from '@/components/layout/LoadingScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,9 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/about" as="document" />
         <link rel="preload" href="/projects" as="document" />
-        <link rel="preload" href="/blog" as="document" />
         <link rel="preload" href="/contact" as="document" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon-16x16.svg" type="image/svg+xml" sizes="16x16" />
@@ -51,7 +46,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <NavigationProvider>
-            <PagePreloader />
             <div className="min-h-screen flex flex-col">
               <Navigation />
               <main className="flex-1">

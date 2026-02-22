@@ -142,20 +142,20 @@ export default function TimelineBrief() {
                     initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: 0.8 + index * 0.2, duration: 0.8 }}
-                    className={`relative flex items-center ${
+                    className={`relative flex items-center group ${
                       isEven ? 'md:flex-row' : 'md:flex-row-reverse'
                     }`}
                   >
                     {/* Timeline Dot */}
                     <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 z-10">
-                      <div className={`w-8 h-8 ${item.color} rounded-full flex items-center justify-center shadow-lg`}>
+                      <div className={`w-8 h-8 ${item.color} rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-125 hover:shadow-xl cursor-pointer group-hover:scale-125`}>
                         <Icon className="text-white" size={16} />
                       </div>
                     </div>
 
                     {/* Content - Brief version for home page */}
                     <div className={`ml-16 md:ml-0 md:w-1/2 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
-                      <div className="card p-6 hover:scale-105 transition-all duration-300">
+                      <div className="card p-6 hover:scale-105 transition-all duration-300 group-hover:border-primary-400 group-hover:shadow-xl">
                         <div className="flex items-start justify-between mb-4">
                           <div>
                             <h3 className="text-xl font-bold text-dark-900 dark:text-dark-100 mb-1">

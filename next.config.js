@@ -8,6 +8,22 @@ const nextConfig = {
   // Enable static optimization
   output: 'standalone',
   
+  // Redirects for removed pages
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: '/blog',
+        destination: '/projects',
+        permanent: true, // 301 redirect
+      },
+    ]
+  },
+  
   // Optimize images
   images: {
     remotePatterns: [

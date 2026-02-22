@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Sparkles, Code, Zap } from 'lucide-react'
+import { ArrowDown, Sparkles, Code, Zap, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
@@ -9,8 +9,8 @@ export function Hero() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary-400/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary-400/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="container-max section-padding text-center">
@@ -62,7 +62,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-xl md:text-2xl text-dark-600 dark:text-dark-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-slate-200 dark:text-indigo-100 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             I transform ideas into{' '}
             <span className="text-primary-600 dark:text-primary-400 font-semibold">innovative solutions</span>{' '}
@@ -77,12 +77,12 @@ export function Hero() {
             transition={{ delay: 1, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16"
           >
-            <Link href="/projects" className="btn-primary">
-              View My Work
+            <Link href="/contact" className="btn-primary">
+              Contact Me
             </Link>
-            <Link href="/contact" className="btn-secondary">
-              Let's Connect
-            </Link>
+            <a href="/CV_FInal2 DE.pdf" download className="btn-outline">
+              Download CV
+            </a>
           </motion.div>
 
           {/* Wizard/Creative Element */}
@@ -107,15 +107,22 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          onClick={() => {
+            const aboutSection = document.querySelector('section:nth-of-type(2)');
+            aboutSection?.scrollIntoView({ behavior: 'smooth' });
+          }}
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center space-y-2 text-dark-400 dark:text-dark-500"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center space-y-2 text-indigo-200 dark:text-indigo-300 
+                       hover:text-primary-400 transition-colors"
           >
             <span className="text-sm font-medium">Scroll to explore</span>
-            <ArrowDown size={20} />
+            <div className="flex flex-col space-y-1">
+              <ChevronDown size={24} className="animate-bounce" />
+            </div>
           </motion.div>
         </motion.div>
       </div>

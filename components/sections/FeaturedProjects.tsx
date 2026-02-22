@@ -11,7 +11,7 @@ const featuredProjects = [
   {
     title: 'Student Portal - Academic Management System',
     description: 'A comprehensive student management system built with React and Node.js, featuring student registration, course management, grade tracking, and administrative tools for educational institutions.',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop',
+    image: '/Graphics/Development/Portal.png',
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
     github: 'https://github.com/Gekkorizz/Student-Portal',
     demo: null,
@@ -20,18 +20,18 @@ const featuredProjects = [
   {
     title: 'Byte-N-Crypt - File Encryption Tool',
     description: 'A secure file encryption and decryption application with advanced cryptographic algorithms. Features user-friendly interface for protecting sensitive data with military-grade encryption.',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
+    image: '/Graphics/Development/Loading .....png',
     technologies: ['Python', 'Cryptography', 'Tkinter', 'AES', 'RSA'],
     github: 'https://github.com/Gekkorizz/Byte-N-Crypt',
     demo: null,
     featured: true
   },
   {
-    title: 'Rome Arte - Digital Art Platform',
-    description: 'An elegant digital art showcase platform that combines classical aesthetics with modern web technologies. Features responsive galleries, artist portfolios, and interactive art exploration.',
-    image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP'],
-    github: 'https://github.com/Gekkorizz/RomeArte',
+    title: 'FileWalker - Selective Copy Utility',
+    description: 'A powerful command-line file management utility that enables selective copying and organization of files based on custom criteria. Perfect for backup operations, file system management, and automated file organization tasks.',
+    image: '/Graphics/Development/1701714764933.jpeg',
+    technologies: ['Python', 'OS Module', 'File I/O', 'CLI', 'Logging'],
+    github: 'https://github.com/Gekkorizz/FileWalker-Selective-Copy-Utility',
     demo: null,
     featured: true
   }
@@ -96,8 +96,8 @@ export function FeaturedProjects() {
               >
                 <div className={`${index === 0 ? 'md:flex' : ''}`}>
                   {/* Project Image */}
-                  <div className={`relative overflow-hidden ${
-                    index === 0 ? 'md:w-1/2' : 'aspect-video'
+                  <div className={`relative overflow-hidden border border-white/10 ${
+                    index === 0 ? 'md:w-1/2 md:rounded-l-xl md:rounded-tr-none rounded-t-xl' : 'aspect-video rounded-t-xl'
                   }`}>
                     <Image
                       src={project.image}
@@ -113,7 +113,7 @@ export function FeaturedProjects() {
                     <h3 className="text-xl font-bold text-dark-900 dark:text-dark-100 mb-3">
                       {project.title}
                     </h3>
-                    <p className="text-dark-600 dark:text-dark-400 mb-4 leading-relaxed">
+                    <p className="text-base text-dark-600 dark:text-dark-400 mb-4 leading-relaxed">
                       {project.description}
                     </p>
 

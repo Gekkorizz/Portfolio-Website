@@ -1,7 +1,8 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react'
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/Gekkorizz', icon: Github },
@@ -31,8 +32,22 @@ const footerLinks = [
 ]
 
 export function Footer() {
+  const [showBackToTop, setShowBackToTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <footer className="bg-dark-50 dark:bg-dark-900 border-t border-dark-200 dark:border-dark-800">
+    <footer className="bg-dark-50 dark:bg-dark-900 border-t border-dark-200 dark:border-dark-800 relative">
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -91,6 +106,19 @@ export function Footer() {
           </p>
         </div>
       </div>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 p-3 bg-primary-600 hover:bg-primary-700 
+                   text-white rounded-full shadow-lg hover:shadow-xl transition-all 
+                   duration-300 hover:scale-110 focus:outline-none focus:ring-2 
+                   focus:ring-primary-500 focus:ring-offset-2 z-50 
+                   ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+        aria-label="Back to top"
+      >
+        <ArrowUp size={24} />
+      </button>
     </footer>
   )
 }

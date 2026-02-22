@@ -13,6 +13,8 @@ out/
 # Ignore environment files
 .env*
 
+.kiro
+
 # Ignore Mac system files
 .DS_Store
 
