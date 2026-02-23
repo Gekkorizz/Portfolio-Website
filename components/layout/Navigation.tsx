@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, Github, Linkedin } from 'lucide-react'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { LRLogo } from '@/components/ui/LRLogo'
 
 const navigation = [
@@ -72,8 +71,6 @@ export function Navigation() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
-            
             <div className="flex items-center space-x-2">
               <a
                 href="https://www.github.com/Gekkorizz"
@@ -140,7 +137,7 @@ export function Navigation() {
                   </Link>
                 ))}
                 
-                <div className="flex items-center justify-between pt-4 border-t border-dark-200 dark:border-dark-700">
+                <div className="flex items-center justify-center pt-4 border-t border-dark-200 dark:border-dark-700">
                   <div className="flex items-center space-x-2">
                     <a
                       href="https://github.com/lakshayrai"
@@ -159,8 +156,6 @@ export function Navigation() {
                       <Linkedin size={20} />
                     </a>
                   </div>
-                  
-                  <ThemeToggle />
                 </div>
                 
                 <a

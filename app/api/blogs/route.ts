@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+export const maxDuration = 1
+
 export async function GET() {
   try {
     console.log('Fetching articles from Dev.to API...')

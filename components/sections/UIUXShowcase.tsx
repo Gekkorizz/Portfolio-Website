@@ -51,7 +51,7 @@ const uiuxProjects = [
   {
     title: 'Restaurant App Design',
     description: 'Modern restaurant mobile app design featuring intuitive navigation, seamless ordering flow, and appetizing visual design. Complete UI/UX solution for food delivery and restaurant discovery.',
-    image: '/graphics/UIUX/Restaurant_app.png',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/UIUX/Restaurant_app.png',
     category: 'Mobile Design',
     tools: ['Figma', 'Adobe XD', 'Prototyping', 'User Research'],
     prototype: 'https://www.figma.com/design/xZCyUws7KhJ295FZrjZQYc/ResHomepage?node-id=0-1&p=f&t=SSdDiu4PQU10CNy8-0',
@@ -68,7 +68,7 @@ const uiuxProjects = [
   {
     title: 'Custom Search Engine',
     description: 'Innovative search engine interface design focusing on user experience, advanced filtering, and intuitive result presentation. Clean, modern design with powerful functionality.',
-    image: '/graphics/UIUX/Custom_search_engine.png',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/UIUX/Custom_search_engine.png',
     category: 'Web Design',
     tools: ['Figma', 'Information Architecture', 'Prototyping'],
     prototype: 'https://www.figma.com/design/ErBhabsEgTjX2Xjw6sF61E/Search-Engine?node-id=1-2&p=f&t=SSdDiu4PQU10CNy8-0',
@@ -85,7 +85,7 @@ const uiuxProjects = [
   {
     title: 'Rome Arte - Digital Art Platform',
     description: 'An elegant digital art showcase platform that combines classical Roman aesthetics with modern web technologies. Features responsive galleries, artist portfolios, and interactive art exploration.',
-    image: '/graphics/UIUX/RomeArte.png',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/UIUX/RomeArte.png',
     category: 'UI/UX Design',
     tools: ['Figma', 'User Experience', 'Prototype', 'Competition'],
     prototype: 'https://www.figma.com/design/1yGcs5XuOE6os2UfulwCba/RomeArte?t=g1Bn0OWyjX8N6lGt-0',
@@ -114,7 +114,7 @@ export function UIUXShowcase() {
   })
 
   return (
-    <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-900">
+    <section ref={ref} className="section-padding">
       <div className="container-max">
         {/* Section Header */}
         <motion.div

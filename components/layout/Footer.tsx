@@ -47,7 +47,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-dark-50 dark:bg-dark-900 border-t border-dark-200 dark:border-dark-800 relative">
+    <footer className="bg-black/80 backdrop-blur-sm border-t border-white/10 relative">
       <div className="container-max section-padding">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}

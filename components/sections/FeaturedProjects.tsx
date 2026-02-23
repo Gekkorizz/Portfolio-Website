@@ -11,7 +11,7 @@ const featuredProjects = [
   {
     title: 'Student Portal - Academic Management System',
     description: 'A comprehensive student management system built with React and Node.js, featuring student registration, course management, grade tracking, and administrative tools for educational institutions.',
-    image: '/Graphics/Development/Portal.png',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/Development/Portal.png',
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
     github: 'https://github.com/Gekkorizz/Student-Portal',
     demo: null,
@@ -20,7 +20,7 @@ const featuredProjects = [
   {
     title: 'Byte-N-Crypt - File Encryption Tool',
     description: 'A secure file encryption and decryption application with advanced cryptographic algorithms. Features user-friendly interface for protecting sensitive data with military-grade encryption.',
-    image: '/Graphics/Development/Loading .....png',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/Development/Loading%20.....png',
     technologies: ['Python', 'Cryptography', 'Tkinter', 'AES', 'RSA'],
     github: 'https://github.com/Gekkorizz/Byte-N-Crypt',
     demo: null,
@@ -29,7 +29,7 @@ const featuredProjects = [
   {
     title: 'FileWalker - Selective Copy Utility',
     description: 'A powerful command-line file management utility that enables selective copying and organization of files based on custom criteria. Perfect for backup operations, file system management, and automated file organization tasks.',
-    image: '/Graphics/Development/1701714764933.jpeg',
+    image: 'https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/Development/1701714764933.jpeg',
     technologies: ['Python', 'OS Module', 'File I/O', 'CLI', 'Logging'],
     github: 'https://github.com/Gekkorizz/FileWalker-Selective-Copy-Utility',
     demo: null,

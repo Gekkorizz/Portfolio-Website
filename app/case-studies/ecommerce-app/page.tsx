@@ -9,7 +9,7 @@ export default function EcommerceAppCaseStudy() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-dark-900">
+      <section className="section-padding">
         <div className="container-max">
           <Link 
             href="/projects" 

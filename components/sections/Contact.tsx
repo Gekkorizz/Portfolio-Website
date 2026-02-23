@@ -44,7 +44,7 @@ export function Contact() {
   }
 
   return (
-    <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">
+    <section ref={ref} className="section-padding">
       <div className="container-max">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

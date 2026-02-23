@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code2, Database, Globe, Smartphone, Cloud, Wrench, Users } from 'lucide-react'
+import { Code2, Database, Globe, Smartphone, Cloud, Wrench } from 'lucide-react'
 
 const skillCategories = [
   {
@@ -48,13 +48,6 @@ const skillCategories = [
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-100 dark:bg-indigo-900/30',
     skills: ['VSCode', 'IntelliJ IDEA', 'DataDog']
-  },
-  {
-    title: 'Soft Skills',
-    icon: Users,
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-100 dark:bg-purple-900/30',
-    skills: ['Problem Solving', 'Creative Thinking', 'Team Collaboration', 'Project Management', 'Technical Writing']
   }
 ]
 

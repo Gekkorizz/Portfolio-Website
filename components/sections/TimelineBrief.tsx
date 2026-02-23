@@ -60,7 +60,7 @@ export default function TimelineBrief() {
   const dotOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">
+    <section ref={ref} className="section-padding">
       <div className="container-max">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -105,19 +105,19 @@ export default function TimelineBrief() {
             
             {/* Scroll-Synced Progress Line */}
             <motion.div
-              className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-600 transform md:-translate-x-0.5 shadow-lg origin-top"
+              className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-yellow-300 via-amber-400 to-yellow-500 transform md:-translate-x-0.5 shadow-lg shadow-yellow-500/30 origin-top"
               style={{ height: lineHeight }}
             />
             
             {/* Scroll-Synced Glow Effect */}
             <motion.div
-              className="absolute left-4 md:left-1/2 top-0 w-1 bg-gradient-to-b from-primary-400/50 via-accent-400/50 to-primary-500/50 transform md:-translate-x-0.5 blur-sm origin-top"
+              className="absolute left-4 md:left-1/2 top-0 w-1 bg-gradient-to-b from-yellow-200/70 via-amber-300/60 to-yellow-400/70 transform md:-translate-x-0.5 blur-sm origin-top"
               style={{ height: lineHeight }}
             />
             
             {/* Scroll-Synced Moving Dot */}
             <motion.div
-              className="absolute left-4 md:left-1/2 w-3 h-3 bg-primary-500 rounded-full transform -translate-x-1/2 md:-translate-x-1/2 shadow-lg"
+              className="absolute left-4 md:left-1/2 w-3 h-3 bg-yellow-400 rounded-full transform -translate-x-1/2 md:-translate-x-1/2 shadow-lg shadow-yellow-500/50"
               style={{ 
                 top: dotPosition,
                 opacity: dotOpacity
@@ -125,7 +125,7 @@ export default function TimelineBrief() {
             >
               {/* Pulsing ring effect */}
               <motion.div
-                className="absolute inset-0 bg-primary-400 rounded-full"
+                className="absolute inset-0 bg-amber-300 rounded-full"
                 animate={{ scale: [1, 1.5, 1], opacity: [0.8, 0, 0.8] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />

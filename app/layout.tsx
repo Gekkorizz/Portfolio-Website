@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { NavigationProvider } from '@/components/providers/NavigationProvider'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { SpaceBackground } from '@/components/layout/SpaceBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <head>
         <link rel="preload" href="/projects" as="document" />
         <link rel="preload" href="/contact" as="document" />
@@ -44,17 +44,16 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-16x16.svg" type="image/svg+xml" sizes="16x16" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider>
-          <NavigationProvider>
-            <div className="min-h-screen flex flex-col">
-              <Navigation />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </NavigationProvider>
-        </ThemeProvider>
+        <NavigationProvider>
+          <SpaceBackground />
+          <div className="min-h-screen flex flex-col relative z-10">
+            <Navigation />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </NavigationProvider>
       </body>
     </html>
   )

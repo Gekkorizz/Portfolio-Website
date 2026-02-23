@@ -190,7 +190,7 @@ export default function ToolboxPage() {
       </section>
 
       {/* Tools Grid */}
-      <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">
+      <section ref={ref} className="section-padding">
         <div className="container-max">
           <div className="space-y-16">
             {toolCategories.map((category, categoryIndex) => {

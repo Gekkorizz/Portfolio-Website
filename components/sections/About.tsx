@@ -28,7 +28,7 @@ export function About() {
   }, []);
 
   return (
-    <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">
+    <section ref={ref} className="section-padding">
       <div className="container-max">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,21 +99,6 @@ export function About() {
                 </ul>
               </div>
 
-              {/* Expertise Badges - Keep existing */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4">
-                <span className="px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium">
-                  Full Stack Developer
-                </span>
-                <span className="px-4 py-2 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-sm font-medium">
-                  UI/UX Designer
-                </span>
-                <span className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
-                  Open Source Contributor
-                </span>
-                <span className="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">
-                  Security Enthusiast
-                </span>
-              </div>
             </motion.div>
 
             {/* Interests */}

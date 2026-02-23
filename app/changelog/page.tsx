@@ -249,7 +249,7 @@ export default function ChangelogPage() {
       </section>
 
       {/* Changelog Entries */}
-      <section ref={ref} className="section-padding bg-dark-50 dark:bg-dark-800/50">
+      <section ref={ref} className="section-padding">
         <div className="container-max">
           <div className="max-w-4xl mx-auto">
             <div className="space-y-12">
