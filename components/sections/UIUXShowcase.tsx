@@ -13,6 +13,7 @@ const otherWorksConfig = [
     title: 'Code Visualization Interface',
     category: 'UI Design',
     description: 'Modern interface design for code visualization and development tools',
+    github: 'https://github.com/Gekkorizz',
     size: 'medium'
   },
   {
@@ -20,6 +21,7 @@ const otherWorksConfig = [
     title: 'Travel App',
     category: 'Mobile Design',
     description: 'Travel application design with intuitive navigation and beautiful visuals',
+    github: 'https://github.com/Gekkorizz',
     size: 'medium'
   },  
   {
@@ -27,6 +29,7 @@ const otherWorksConfig = [
     title: 'Blender-Bottle',
     category: 'Mobile Design',
     description: 'Travel application design with intuitive navigation and beautiful visuals',
+    github: 'https://github.com/Gekkorizz',
     size: 'medium'
   }
   // Add new images here by just adding their filename and details
@@ -36,11 +39,12 @@ const otherWorksConfig = [
 // Auto-generate gallery images from the config
 const galleryImages = otherWorksConfig.map((work, index) => ({
   id: index + 1,
-  src: `/graphics/Other/${work.filename}`,
+  src: `https://raw.githubusercontent.com/Gekkorizz/Portfolio-Website/main/public/Graphics/Other/${encodeURIComponent(work.filename)}`,
   alt: work.title,
   title: work.title,
   category: work.category,
   description: work.description,
+  github: work.github,
   size: work.size || 'medium' // Default to medium if no size specified
 }))
 
@@ -168,6 +172,7 @@ export function UIUXShowcase() {
                       title: project.title,
                       category: project.category,
                       description: project.description,
+                      github: project.github || 'https://github.com/Gekkorizz',
                       size: 'medium'
                     })}
                     className="p-3 bg-white/90 dark:bg-dark-800/90 rounded-full hover:scale-110 transition-transform duration-200"
@@ -319,6 +324,19 @@ export function UIUXShowcase() {
                         {image.category}
                       </span>
                     </div>
+
+                    {image.github && (
+                      <a
+                        href={image.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-dark-800/90 rounded-full hover:scale-110 transition-transform duration-200"
+                        aria-label={`View ${image.title} on GitHub`}
+                      >
+                        <Github size={16} className="text-dark-700 dark:text-dark-300" />
+                      </a>
+                    )}
 
                     {/* Content Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">

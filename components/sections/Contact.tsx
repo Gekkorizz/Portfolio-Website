@@ -136,7 +136,7 @@ export function Contact() {
                           className="flex items-center space-x-3 text-dark-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm"
                         >
                           <Github size={20} />
-                          <span>github.com/Gekkorizz</span>
+                          <span>https://github.com/Gekkorizz</span>
                         </a>
                         <a
                           href="https://www.linkedin.com/in/lakshay-rai-3b6889258/"
@@ -145,7 +145,7 @@ export function Contact() {
                           className="flex items-center space-x-3 text-dark-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm"
                         >
                           <Linkedin size={20} />
-                          <span>linkedin.com/in/lakshay-rai-3b6889258</span>
+                          <span>https://www.linkedin.com/in/lakshay-rai-3b6889258/</span>
                         </a>
                       </div>
                     </div>
