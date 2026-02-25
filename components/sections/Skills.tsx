@@ -6,34 +6,34 @@ import { Code2, Database, Globe, Smartphone, Cloud, Wrench } from 'lucide-react'
 
 const skillCategories = [
   {
-    title: 'Development',
+    title: 'Languages',
     icon: Globe,
     color: 'text-blue-600',
     bgColor: 'bg-blue-100 dark:bg-blue-900/30',
     skills: [
-      'React', 'Next.js','Tailwind CSS', 'MySQL'
+      'Java', 'Python', 'C'
     ]
   },
   {
-    title: 'DevOps',
+    title: 'Tools',
     icon: Wrench,
     color: 'text-orange-600',
     bgColor: 'bg-orange-100 dark:bg-orange-900/30',
-    skills: ['Docker', 'Jenkins', 'Linux']
+    skills: ['MySQL', 'MongoDB', 'Linux', 'DataDog']
   },
   {
-    title: 'Cloud',
+    title: 'Frameworks & Libraries',
     icon: Cloud,
     color: 'text-teal-600',
     bgColor: 'bg-teal-100 dark:bg-teal-900/30',
-    skills: ['AWS', 'GCP', 'Vercel']
+    skills: ['Sring Boot', 'Pandas', 'Matplotlib']
   },
   {
-    title: 'Languages',
+    title: 'Concepts',
     icon: Code2,
     color: 'text-red-600',
     bgColor: 'bg-red-100 dark:bg-red-900/30',
-    skills: ['Python', 'Java', 'C']
+    skills: ['OOPs', 'Agile', 'REST APIs']
   },
   {
     title: 'Design',
@@ -43,11 +43,11 @@ const skillCategories = [
     skills: ['Figma', 'Photoshop', 'Blender']
   },
   {
-    title: 'Code Editors',
+    title: 'Deployment and Cloud',
     icon: Wrench,
     color: 'text-indigo-600',
     bgColor: 'bg-indigo-100 dark:bg-indigo-900/30',
-    skills: ['VSCode', 'IntelliJ IDEA', 'DataDog']
+    skills: ['VSCode', 'Git', 'Vercel', 'AWS']
   }
 ]
 

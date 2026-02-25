@@ -59,7 +59,7 @@ export function About() {
             </motion.h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -86,16 +86,13 @@ export function About() {
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-primary-500 mt-1">•</span>
-                    <span>Developing expertise in full-stack web development and cybersecurity</span>
+                    <span>Developing expertise in Java development</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span className="text-primary-500 mt-1">•</span>
                     <span>Active in hackathons and exploring AI/machine learning innovations</span>
                   </li>
-                  <li className="flex items-start space-x-2">
-                    <span className="text-primary-500 mt-1">•</span>
-                    <span>Contributing to open source and sharing knowledge with the developer community</span>
-                  </li>
+
                 </ul>
               </div>
 
@@ -106,7 +103,7 @@ export function About() {
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="space-y-6 mb-40"
+              className="space-y-6"
             >
               <div className="space-y-2 mb-6">
                 <div className="flex items-center justify-center space-x-2">
@@ -143,19 +140,6 @@ export function About() {
               </div>
 
               {/* Fun Fact */}
-                <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 1.4, duration: 0.8 }}
-                className="glass p-6 rounded-lg mb-8"
-                >
-                <p className="text-sm text-dark-600 dark:text-dark-400 mb-2 text-center">
-                  Fun Fact 🖱️
-                </p>
-                <p className="font-medium text-dark-800 dark:text-dark-200">
-                  The first computer mouse was invented in 1964 and was made of wood. 🪵 It revolutionized how we interact with technology!
-                </p>
-                </motion.div>
                 <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}

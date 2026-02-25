@@ -2,10 +2,26 @@
 
 import { motion } from 'framer-motion'
 import { Folder, Filter } from 'lucide-react'
+import type { ProjectFilter } from '@/app/projects/ProjectsContent'
 
-export function ProjectsHero() {
+interface ProjectsHeroProps {
+  activeFilter: ProjectFilter
+  onFilterChange: (filter: ProjectFilter) => void
+}
+
+export function ProjectsHero({ activeFilter, onFilterChange }: ProjectsHeroProps) {
+  const getButtonClassName = (filter: ProjectFilter) => {
+    const isActive = activeFilter === filter
+
+    if (isActive) {
+      return 'px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors'
+    }
+
+    return 'px-6 py-3 bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 rounded-lg font-medium hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors border border-dark-200 dark:border-dark-600'
+  }
+
   return (
-    <section className="section-padding pt-32">
+    <section className="section-padding pt-32 pb-8 lg:pb-12">
       <div className="container-max">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -51,18 +67,30 @@ export function ProjectsHero() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <button className="flex items-center space-x-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+            <button
+              onClick={() => onFilterChange('all')}
+              className={`flex items-center space-x-2 ${getButtonClassName('all')}`}
+            >
               <Filter size={18} />
               <span>All Projects</span>
             </button>
-            <button className="px-6 py-3 bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 rounded-lg font-medium hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors border border-dark-200 dark:border-dark-600">
-              Web Apps
+            <button
+              onClick={() => onFilterChange('development')}
+              className={getButtonClassName('development')}
+            >
+              Development
             </button>
-            <button className="px-6 py-3 bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 rounded-lg font-medium hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors border border-dark-200 dark:border-dark-600">
-              Mobile
+            <button
+              onClick={() => onFilterChange('designs')}
+              className={getButtonClassName('designs')}
+            >
+              Designs
             </button>
-            <button className="px-6 py-3 bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 rounded-lg font-medium hover:bg-dark-50 dark:hover:bg-dark-700 transition-colors border border-dark-200 dark:border-dark-600">
-              Open Source
+            <button
+              onClick={() => onFilterChange('blogs')}
+              className={getButtonClassName('blogs')}
+            >
+              Blogs
             </button>
           </motion.div>
         </motion.div>

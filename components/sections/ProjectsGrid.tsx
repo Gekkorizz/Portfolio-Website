@@ -58,7 +58,7 @@ export function ProjectsGrid() {
   })
 
   return (
-    <section ref={ref} className="section-padding">
+    <section ref={ref} className="section-padding pt-8 lg:pt-12">
       <div className="container-max">
         {/* Section Header */}
         <motion.div

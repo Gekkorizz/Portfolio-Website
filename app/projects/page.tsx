@@ -1,7 +1,4 @@
-import { ProjectsGrid } from '@/components/sections/ProjectsGrid'
-import { ProjectsHero } from '@/components/sections/ProjectsHero'
-import { UIUXShowcase } from '@/components/sections/UIUXShowcase'
-import { LatestBlogs } from '@/components/sections/LatestBlogs'
+import { ProjectsContent } from './ProjectsContent'
 
 export const metadata = {
   title: 'Projects - Lakshay Rai',
@@ -14,11 +11,6 @@ export const revalidate = 3600
 
 export default function ProjectsPage() {
   return (
-    <>
-      <ProjectsHero />
-      <ProjectsGrid />
-      <UIUXShowcase />
-      <LatestBlogs />
-    </>
+    <ProjectsContent />
   )
 }

@@ -36,7 +36,7 @@ export function Navigation() {
       }`}
     >
       <div className="container-max section-padding py-4">
-        <div className="flex items-center justify-between">
+        <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center">
           {/* Logo */}
           <Link
             href={pathname === '/' ? '/surprise' : '/'}
@@ -47,7 +47,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 justify-self-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -70,7 +70,7 @@ export function Navigation() {
           </div>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 justify-self-end">
             <div className="flex items-center space-x-2">
               <a
                 href="https://www.github.com/Gekkorizz"
@@ -105,7 +105,7 @@ export function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
+            className="md:hidden justify-self-end p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
